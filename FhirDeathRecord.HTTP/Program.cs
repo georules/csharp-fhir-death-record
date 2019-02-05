@@ -69,7 +69,7 @@ namespace FhirDeathRecord.HTTP
             {
                 case string url when new Regex(@"(ije|mor)$").IsMatch(url): // .mor or .ije
                     IJEMortality ije = new IJEMortality(deathRecord);
-                    result = ije.ToString();
+                    result = ije.ToString().Substring(0, 5000);
                     break;
                 case string url when new Regex(@"json$").IsMatch(url): // .json
                     result = deathRecord.ToJSON();
